@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% include 'user_navigation.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .lb1{
+        font-weight:bold;
+        font-size:20px;
+        color:gray;
+        text-decoration:underline;
+        font-style:italic;
+        }
+        .lb2{
+        font-weight:bold;
+        font-size:20px;
+        color:blue;
+        }
+        .lb3{
+        font-weight:bold;
+        font-size:20px;
+        color:sky;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+   <div class="row" style="width:100%;">
+    <div class="mt-2" style="border:2px solid blue;border-radius:30px;min-height:400px;max-height:1500px;padding:20px;">
+        <label for="" class="lb1">Place Name:</label><label class="lb2" for="">&nbsp; {{data.p_name}} {{data.p_city}}, {{data.p_state}}</label>
+        <div style="float:right;margin-right:170px;" class="col-4">
+            <img src="{{data.image.url}}" alt="" height="300" width="500" style="border-radius:25%;">
+        </div>
+        <br>
+        <label for="" class="lb1">Extra Activities: </label><label for="" class="lb2">&nbsp; {{data.activity}}</label>
+        <br>
+        <label for="" class="lb1">History Of Place:</label>
+        <div class="col-6">
+            <label for="" class="lb3"><font face="mv boli">&nbsp;{{data.history}}</font></label>
+        </div>
+    <center>
+        <a href="{% url 'view_room_user' %}" class="btn btn-primary mt-4" style="width:200px;">Back</a>
+    </center>
+    </div>
+    </div>
+</div>
+</body>
+</html>

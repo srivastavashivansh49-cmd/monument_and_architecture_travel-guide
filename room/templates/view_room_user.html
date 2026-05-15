@@ -1,0 +1,47 @@
+{% load static %}
+
+{% block body %}
+{% include 'user_navigation.html' %}
+
+<marquee behavior="alternate" style="font-family: 'Monotype Corsiva'; font-size:25px; color:darkcyan; background-color:black; font-weight:bold; margin-top:1%">
+    All Monument
+</marquee>
+
+<div class="container mt-4">
+<div class="row">
+    {% for i in data %}
+
+    <div class="card float col-6 mt-6 mb-6 " style="width:300px">
+        <h3><font face="mv boli" size="5">Place: {{i.p_name}}</font></h3>
+        <img class="card-img-top" src="{{i.image.url}}" alt="Card image" height="200px">
+        <div class="card-body">
+          <h4 class="card-title">{{i.p_state}} {{i.p_city}}</h4>
+          <h5 class="card-title">Price : {{i.t_price}}/Person</h5>
+            <div class="row">
+                <div class="form-group col-md-12" >
+                    <p class="card-text">{{i.status}} <a style="float:right;" href="{% url 'more_detail' i.id %}">More Derail</a></p>
+                </div>
+                <div class="form-group col-md-6" >
+                </div>
+            </div>
+    {% if i.status == "Available" %}
+            <center>
+                <a href="{% url 'book_room' i.id %}" class="btn btn-primary">Book Now</a>
+            </center>
+    {% endif %}
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{% endfor %}
+{% if not data %}
+    <center>
+        <h1>No Monuments Added Yet</h1>
+    </center>
+    </div>
+{% endif %}
+</div>
+{% endblock %}
+
+</div>
+{% include 'footer.html' %}
+

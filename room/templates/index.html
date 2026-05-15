@@ -1,0 +1,23 @@
+{% include 'navigation.html' %}
+{% load static %}
+<style>
+    .abc{
+        height: 500px;
+        margin-top: 10px;
+        background-image: url("{% static 'images/b2.jpg' %}");
+        background-size: 100% 100%;
+        animation: abcd 20s infinite;
+    }
+    @keyframes abcd {
+        20% { background-image: url("{% static 'images/b3.jpg' %}"); }
+        40% { background-image: url("{% static 'images/b1.jpg' %}"); }
+        60% { background-image: url("{% static 'images/b4.jpg' %}"); }
+        80% { background-image: url("{% static 'images/b5.jpg' %}"); }
+        100% { background-image: url("{% static 'images/b6.jpg' %}"); }
+    }
+</style>
+<div class="container-fluid abc"></div>
+
+
+{% include 'footer.html' %}
+<a name="down"></a>

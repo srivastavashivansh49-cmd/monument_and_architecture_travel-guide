@@ -1,0 +1,80 @@
+{% include 'admin_navigation.html' %}
+
+<marquee behavior="alternate" style="font-family: 'Monotype Corsiva'; font-size:25px; color:darkcyan; background-color:black; font-weight:bold; margin-top:1%">
+    Add New Monument
+</marquee>
+<hr>
+<form class="container mt-5" onsubmit="return checkpass();" name="signup" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="form-group col-md-6" >
+            <label>Place Name:</label>
+            <input type="text" class="form-control" name="pname" placeholder="Enter Name of Place" required>
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Place State:</label>
+            <input type="text" class="form-control" name="pstate" placeholder="Enter State of Place" required>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6" >
+            <label>City(Location of place):</label>
+            <input type="text" class="form-control" name="pcity" placeholder="Location of place" required>
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Ticket Price:</label>
+            <input type="text" class="form-control" name="tprice" placeholder="Price of Ticket per person" required>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6" >
+            <label>Ticket Status:</label>
+            <select class="form-control" name="status">
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Upload Image:</label>
+            <input type="file" class="form-control" name="image" required>
+        </div>
+
+    <div class="row">
+        <div class="form-group col-md-12" >
+            <label>Include Additional Activities:</label>
+            <input type="text" class="form-control" name="activity" placeholder="Write all Additional activities here..." required>
+        </div>
+        </div>
+        <div class="row">
+        <div class="form-group col-md-12" >
+            <label>History of Place:</label>
+            <textarea class="form-control" style="resize:none;" name="phistory" placeholder="History of place" required></textarea>
+        </div>
+        </div>
+
+    </div>
+<center>
+    <input type="submit" value="Submit" class="btn btn-primary my-3" style="width:250px">
+</center>
+</form>
+
+{% if error == "no" %}
+<script>
+    alert("New Monument Added Successfully")
+    window.location = "{% url 'add_room' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something Wrong, Try Again...")
+</script>
+{% endif %}
+
+
+{% include 'footer.html' %}
